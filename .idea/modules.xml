@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/pythongPlantIndexDatabase.iml" filepath="$PROJECT_DIR$/.idea/pythongPlantIndexDatabase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pythonPlantIndexDatabase.iml" filepath="$PROJECT_DIR$/.idea/pythonPlantIndexDatabase.iml" />
     </modules>
   </component>
 </project>
