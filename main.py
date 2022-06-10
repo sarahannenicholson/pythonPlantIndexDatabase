@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 # creating the flask app
 app = Flask(__name__)
@@ -8,42 +8,43 @@ app = Flask(__name__)
 # index page
 @app.route('/')
 def index():
-    return ("Testing")
+    return render_template('index.html')
 
 
 @app.route('/about')
 def about():
-    return ("About Us...")
+    return render_template('about.html')
 
 
 @app.route('/contact')
 def contact():
-    return ("Contact Us")
+    return render_template('contact.html')
 
 
 @app.route('/privacy')
 def privacty():
-    return ("Privacy Policy")
+    return render_template('privacy.html')
 
 
 @app.route('/catalog')
 def catalog():
-    return ("Plant Index Page")
+    return render_template('catalog.html')
 
 
 @app.route('/search')
 def search():
-    return ("Plant Search Page")
+    return render_template('search.html')
 
 
 @app.route('/map')
 def map():
-    return ("Interactive Map Page")
+    return render_template('map.html')
 
 
 @app.route('/plantinfo')
 def plantinfo():
-    return ("Individual Plant Info Page Holder")
+    return render_template('plantinfo.html')
+
 
 # to run the application
 if __name__ == "__main__":
