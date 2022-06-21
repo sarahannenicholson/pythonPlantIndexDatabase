@@ -1,7 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+import pymysql
+
 
 # creating the flask application
 application = Flask(__name__)
+
+db = pymysql.connect(host='plant-index-database.cyaimo2g0lsu.us-east-2.rds.amazonaws.com', user='admin', password='admin123')
+
+cursor = db.cursor()
 
 
 # setting the route for the pages
@@ -64,6 +70,22 @@ def calendar():
 @application.route('/plantinfo')
 def plantinfo():
     return render_template('plantinfo.html')
+
+
+# testing page to make sure the db connection is working
+@application.route('/testing', methods=['GET', 'POST'])
+def testing():
+    if request.method == "POST":
+        sql = 'use testing'
+        cursor.execute(sql)
+        details = request.form
+        firstName = details['fname']
+        lastName = details['lname']
+        cursor.execute("INSERT INTO MyUsers(firstName, lastName) VALUES (%s, %s)", (firstName, lastName))
+        cursor.connection.commit()
+        cursor.close()
+        return 'success'
+    return render_template('testing.html')
 
 
 @application.errorhandler(404)
