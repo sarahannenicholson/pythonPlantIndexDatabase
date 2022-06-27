@@ -10,4 +10,15 @@
 
 <p> Testing </p>
 
+<!-- This creates the links on the catalog page that will late navigate to individual plant pages -->
+<!-- format is the same only it needs to change to /catalog/plant_id and plant.name -->
+
+{% for row in data %}
+
+
+        <li> <a href="/plantinfo/{{row}}">{{row}}</a></li>
+
+
+{% endfor %}
+
 {% endblock %}
