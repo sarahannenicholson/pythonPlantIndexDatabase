@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for message in form.name.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+
+{% for message in form.email.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+
+{% for message in form.subject.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+
+{% for message in form.message.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
+
+<div class="container my-5">
+    <h2> Contact Us:</h2>
+    <p>
+        Have a query? Have some input on the website? Just want some help? Drop us a quick message and we will get back to you
+        as soon as we can!
+        <br>
+        <br>
+        Warmest regards,
+        <br>
+        The Plant Index Team.
+    </p>
+        <div class="container mt-5">
+            <form method="POST" action="{{url_for('contact')}}">
+
+                {{form.csrf_token}}
+
+                    <div class="col-2">
+                        <!--       name     -->
+                        <p>
+                            {{form.name.label}} <br>
+                            {{form.name(class="form-control-md", placeholder='Your Name') }}
+                        </p>
+                        <!--      email      -->
+                        <p>
+                            {{form.email.label}} <br>
+                            {{form.email(placeholder='Your e-mail') }}
+                        </p>
+                        <!--       Subject         -->
+                        <p>
+                            {{form.subject.label}} <br>
+                            {{form.subject(placeholder='Your Subject') }}
+                        </p>
+                        <!--    content        -->
+                        <p>
+                            {{form.message.label}} <br>
+                            {{form.message(placeholder='Your Message') }}
+                        </p>
+                        <!--       submit button     -->
+                        <p>
+                            {{form.submit(class=' btn btn-primary')}}
+                        </p>
+                    </div>
+
+            </form>
+        </div>
+</div>
+
+
+
+
+{% endblock %}

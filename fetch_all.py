@@ -1,22 +1,9 @@
-import pymysql
+from sqlalchemy import create_engine
 
-con = pymysql.connect(host='plant-index-database.cyaimo2g0lsu.us-east-2.rds.amazonaws.com', user='admin',
-                     password='admin123', charset='utf8mb4', cursorclass=pymysql.cursors.DictCursor)
+engine = create_engine("mysql+pymysql://admin:admin123@plant-index-database.cyaimo2g0lsu.us-east-2.rds.amazonaws.com:3306/plant_database")
 
-try:
+result = engine.execute("SELECT * from plant_information WHERE plant_id =7")
 
-    with con.cursor() as cur:
-        # selects specific database
-        cur.execute('use plant_database')
-        # selects database specific table
-        cur.execute('SELECT * FROM plant_information')
-        # fetches
-        rows = cur.fetchall()
+for row in result:
+    print(row['plant_id'], row['plant_name'], row['variety_names'])
 
-        # prints
-        for row in rows:
-            print(row['plant_id'], row['plant_name'])
-
-# closes connection to db
-finally:
-    con.close()

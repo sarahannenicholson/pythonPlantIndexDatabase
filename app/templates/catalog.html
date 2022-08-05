@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+
+<!-- This creates the links on the catalog page that will late navigate to individual plant pages -->
+<!-- format is the same only it needs to change to /catalog/plant_id and plant.name -->
+<div class="container mx-auto">
+        <div class="row mt-5">
+                <div class="col">
+                                <table class="table">
+                                            <tr>
+                                                <th>Plant Name</th>
+                                                <th>Plant Family</th>
+                                                <th>Variety Names</th>
+                                                <th>Alternate Names</th>
+                                                <th>Plant Type</th>
+                                            </tr>
+
+                                        <!-- for loop that prints all plant info to catalog-->
+                                        {% for plantname in plantnames %}
+
+                                        <tr>
+                                                <td> <a href="/plantinfo/{{plantname.plant_name}}">{{plantname.plant_name}}</a></td>
+                                                <td> {{plantname.family_name }}</td>
+                                                <td> {{plantname.variety_names }}</td>
+                                                <td> {{plantname.alt_names }}</td>
+                                                <td> {{plantname.plant_type }}</td>
+
+                                        </tr>
+                                        {% endfor %}
+                                </table>
+                </div>
+        </div>
+</div>
+
+
+
+{% endblock %}

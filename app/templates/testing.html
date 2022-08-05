@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for plantname in plantnames %}
+
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+            <p class="card-text">{{plantname.plant_name}}.</p>
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
