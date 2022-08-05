@@ -1,70 +1,85 @@
 {% extends 'base.html' %}
 
 
-{% block title %} Links {% endblock %}
-
-
 {% block body %}
 
-<h1> Calendar </h1>
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-3">
-            <div class="card border-success p-4 float-left">
-                <div class="filter">
+
+    <div class="row">
+        <div class="col-2 mt-5 ms-5 ">
+            <div class="card border-success">
+                <div>
                     <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter"><h5>Filters</h5><span class="fa fa-filter pl-1"></span></button>
-                </div>
-                    <div id="mobile-filter">
-                        <div>
-                            <h6 class="p-1 border-bottom">Season</h6>
-                            <ul>
-                                <li><a href="#">Spring</a></li>
-                                <li><a href="#">Summer</a></li>
-                                <li><a href="#">Autumn/Fall</a></li>
-                                <li><a href="#">Winter</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h6 class="p-1 border-bottom">Filter By</h6>
-                            <p class="mb-2">Location</p>
-                            <ul class="list-group">
-                                <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                                    <span class="fa fa-circle pr-1" id="red"></span>Red
-                                </a></li>
-                                <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                                    <span class="fa fa-circle pr-1" id="teal"></span>Teal
-                                </a></li>
-                                <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                                    <span class="fa fa-circle pr-1" id="blue"></span>Blue
-                                </a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h6>Type</h6>
-                            <form class="ml-md-2">
-                                <div class="form-inline border rounded p-sm-2 my-2">
-                                    <input type="radio" name="type" id="boring">
-                                    <label for="boring" class="pl-1 pt-sm-0 pt-1">Boring</label>
-                                </div>
-                                <div class="form-inline border rounded p-sm-2 my-2">
-                                    <input type="radio" name="type" id="ugly">
-                                    <label for="ugly" class="pl-1 pt-sm-0 pt-1">Ugly</label>
-                                </div>
-                                <div class="form-inline border rounded p-md-2 p-sm-1">
-                                    <input type="radio" name="type" id="notugly">
-                                    <label for="notugly" class="pl-1 pt-sm-0 pt-1">Not Ugly</label>
-                                </div>
-                            </form>
-                        </div>
                     </div>
-                </div>
+                        <div id="mobile-filter">
+                                <div class ="form-check" form name ="formSeason" method="post" action="" onsubmit="">
+                                    <h6 class="p-1 border-bottom">Season</h6>
+                                    <ul>
+                                        <input type="radio" name="type" id="earlySpring">
+                                            <label for="earlySpring" class="pl-1 pt-sm-0 pt-1">Early Spring</label><br>
+                                        <input type="radio" name="type" id="Spring">
+                                            <label for="Spring" class="pl-1 pt-sm-0 pt-1">Spring</label><br>
+                                        <input type="radio" name="type" id="lateSpring">
+                                            <label for="lateSpring" class="pl-1 pt-sm-0 pt-1">Late Spring</label><br>
+                                        <input type="radio" name="type" id="earlySummer">
+                                            <label for="earlySummer" class="pl-1 pt-sm-0 pt-1">Early Summer</label><br>
+                                        <input type="radio" name="type" id="summer">
+                                            <label for="summer" class="pl-1 pt-sm-0 pt-1">Summer</label><br>
+                                        <input type="radio" name="type" id="lateSummer">
+                                            <label for="lateSummer" class="pl-1 pt-sm-0 pt-1">Late Summer</label><br>
+                                        <input type="radio" name="type" id="earlyFall">
+                                            <label for="earlyFall" class="pl-1 pt-sm-0 pt-1">Early Fall/Autumn</label><br>
+                                        <input type="radio" name="type" id="fallAutumn">
+                                            <label for="fallAutumn" class="pl-1 pt-sm-0 pt-1">Fall/Autumn</label><br>
+                                        <input type="radio" name="type" id="lateFall">
+                                            <label for="lateFall" class="pl-1 pt-sm-0 pt-1">Late Fall/Autumn</label><br>
+                                        <input type="radio" name="type" id="earlyWinter">
+                                            <label for="earlyWinter" class="pl-1 pt-sm-0 pt-1">Early Winter</label><br>
+                                        <input type="radio" name="type" id="winter">
+                                            <label for="winter" class="pl-1 pt-sm-0 pt-1">Winter</label><br>
+                                        <input type="radio" name="type" id="lateWinter">
+                                            <label for="lateWinter" class="pl-1 pt-sm-0 pt-1">Late Winter</label>
+                                    </ul>
+                                </div>
+                                    <div class ="form-check" form name ="formLocation" method="post" action="" onsubmit="">
+                                        <h6 class="p-1 border-bottom">Location</h6>
+                                        <ul>
+                                            <input type="radio" name="type" id="northernHemisphere">
+                                                <label for="northernHemisphere" class="pl-1 pt-sm-0 pt-0">Northern Hemisphere</label><br>
+                                            <input type="radio" name="type" id="southernHemisphere">
+                                                <label for="southernHemisphere" class="pl-1 pt-sm-0 pt-0">Southern Hemisphere</label>
+                                        </ul>
+                                    </div>
+                                <div class ="form-check" form name ="formPlantType" method="post" action="" onsubmit="">
+                                    <h6 class="p-1 border-bottom">Plant Type</h6>
+                                        <ul>
+                                        <input type="radio" name="type" id="Vegetable">
+                                            <label for="Vegetable" class="pl-1 pt-sm-0 pt-0">Vegetable</label><br>
+                                        <input type="radio" name="type" id="Fruit">
+                                            <label for="Fruit" class="pl-1 pt-sm-0 pt-0">Fruit</label><br>
+                                        <input type="radio" name="type" id="Herb">
+                                            <label for="Herb" class="pl-1 pt-sm-0 pt-0">Herb</label><br>
+                                        <input type="radio" name="type" id="pseudocereal">
+                                            <label for="pseudocereal" class="pl-1 pt-sm-0 pt-0">Pseudo-cereal</label><br>
+                                        <input type="radio" name="type" id="Grain">
+                                            <label for="Grain" class="pl-1 pt-sm-0 pt-0">Grain</label><br>
+                                        <input type="radio" name="type" id="Cereal">
+                                            <label for="Cereal" class="pl-1 pt-sm-0 pt-0">Cereal</label><br>
+                                        <input type="radio" name="type" id="Bean">
+                                            <label for="Bean" class="pl-1 pt-sm-0 pt-0">Bean</label><br>
+                                        <input type="radio" name="type" id="Root">
+                                            <label for="Root" class="pl-1 pt-sm-0 pt-0">Root</label>
+                                        </ul>
+                                </div>
+                        </div>
+            </div>
         </div>
-        <div class="col-9">
-            <div class="card border-success p-4">
+        <div class="col mt-5 me-5">
+            <div class="card border-success">
                 <h1>plant</h1>
             </div>
         </div>
     </div>
-</div>
+
+<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="C:\\Users\\sara_\\PycharmProjects\\pythonPlantIndexDatabase\\app\\calendarfile.html" height="525" width="100%"></iframe>
 
 {% endblock %}

@@ -1,9 +1,6 @@
 {% extends 'base.html' %}
 
 
-{% block title %} Plant Index Catalog {% endblock %}
-
-
 {% block body %}
 
 
@@ -18,15 +15,18 @@
                                                 <th>Plant Family</th>
                                                 <th>Variety Names</th>
                                                 <th>Alternate Names</th>
+                                                <th>Plant Type</th>
                                             </tr>
 
                                         <!-- for loop that prints all plant info to catalog-->
                                         {% for plantname in plantnames %}
+
                                         <tr>
                                                 <td> <a href="/plantinfo/{{plantname.plant_name}}">{{plantname.plant_name}}</a></td>
                                                 <td> {{plantname.family_name }}</td>
                                                 <td> {{plantname.variety_names }}</td>
                                                 <td> {{plantname.alt_names }}</td>
+                                                <td> {{plantname.plant_type }}</td>
 
                                         </tr>
                                         {% endfor %}

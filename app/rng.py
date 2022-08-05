@@ -1,3 +1,4 @@
 import random
 
-rannum = random.randint()
+ranint = random.randint(0, 27)
+
