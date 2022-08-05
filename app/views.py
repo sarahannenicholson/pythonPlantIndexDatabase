@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_mail import Mail, Message
 from app import app, db
 from app.dbmodels import PlantDatabase
 from sqlalchemy.sql import text
@@ -10,15 +9,6 @@ import pandas as pd
 
 app.config['SECRET_KEY'] = 'this is a secret key'
 
-# creating and adding the mail config settings for sending messages via the contact us page
-app.config["MAIL_SERVER"] = 'smtp.gmail.com'
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USERNAME"] = 'plantindexdatabase@gmail.com'
-app.config["MAIL_PORT"] = ';q+zuJ&om'
-app.config["MAIL_USE_TLS"] = False
-app.config["MAIL_USE_SSL"] = True
-
-mail = Mail(app)
 
 
 # setting the route for the pages
