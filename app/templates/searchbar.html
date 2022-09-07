@@ -2,7 +2,37 @@
 
 {% block body %}
 
-searched for
+ {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
+
+
+
+<div class="container mx-auto">
+        <div class="row mt-5">
+                <div class="col">
+                    <table class="table">
+                        <tr>
+                            <th><h3>Search Results</h3></th>
+                        </tr>
+
+                        <div class="b-example-divider"></div>
+
+                        <!-- for loop that prints all plant info to catalog-->
+                        {% for plantname in plantnames %}
+
+                        <tr>
+                            <td> <a href="/plantinfo/{{plantname.plant_name}}">{{plantname.plant_name}}</a></td>
+                            <td> {{plantname.variety_names }}</td>
+                            <td> {{plantname.alt_names }}</td>
+                            <td> {{plantname.plant_type }}</td>
+
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+        </div>
+</div>
 
 
 {% endblock %}

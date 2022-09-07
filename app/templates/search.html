@@ -3,65 +3,89 @@
 
 {% block body %}
 
-<div class="container">
-    <div class="row mt-5">
-        <div class="col-3">
+
+    <div class="row">
+        <div class="col-2 mt-5 ms-5">
             <div class="card border-success p-4 float-left">
-                <div class="filter">
-                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter"><h5>Filters</h5><span class="fa fa-filter pl-1"></span></button>
-                </div>
-                    <div id="mobile-filter">
-                        <div>
-                            <h6 class="p-1 border-bottom">Home Furniture</h6>
-                            <ul>
-                                <li><a href="#">Living</a></li>
-                                <li><a href="#">Dining</a></li>
-                                <li><a href="#">Office</a></li>
-                                <li><a href="#">Bedroom</a></li>
-                                <li><a href="#">Kitchen</a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h6 class="p-1 border-bottom">Filter By</h6>
-                            <p class="mb-2">Color</p>
-                            <ul class="list-group">
-                                <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                                    <span class="fa fa-circle pr-1" id="red"></span>Red
-                                </a></li>
-                                <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                                    <span class="fa fa-circle pr-1" id="teal"></span>Teal
-                                </a></li>
-                                <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
-                                    <span class="fa fa-circle pr-1" id="blue"></span>Blue
-                                </a></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h6>Type</h6>
-                            <form class="ml-md-2">
-                                <div class="form-inline border rounded p-sm-2 my-2">
-                                    <input type="radio" name="type" id="boring">
-                                    <label for="boring" class="pl-1 pt-sm-0 pt-1">Boring</label>
-                                </div>
-                                <div class="form-inline border rounded p-sm-2 my-2">
-                                    <input type="radio" name="type" id="ugly">
-                                    <label for="ugly" class="pl-1 pt-sm-0 pt-1">Ugly</label>
-                                </div>
-                                <div class="form-inline border rounded p-md-2 p-sm-1">
-                                    <input type="radio" name="type" id="notugly">
-                                    <label for="notugly" class="pl-1 pt-sm-0 pt-1">Not Ugly</label>
-                                </div>
-                            </form>
-                        </div>
+                <form action="{{url_for('search')}}" method="post">
+                    <div class="filter">
+                            <h5>Filters</h5><span class="fa fa-filter pl-1"></span>
                     </div>
-                </div>
-        </div>
-        <div class="col-9">
-            <div class="card border-success p-4">
-                <h1>plant</h1>
+                    <div id="mobile-filter">
+                            <div>
+                                <h6 class="p-1 border-bottom">Season</h6>
+                                <ul>
+                                    <input type="radio" name="seasonValue" id="Spring" value="Spring">Spring</input><br>
+                                    <input type="radio" name="seasonValue" id="Summer" value="Summer">Summer</input><br>
+                                    <input type="radio" name="seasonValue" id="Autumn" value="Fall">Autumn</input><br>
+                                    <input type="radio" name="seasonValue" id="Winter" value="Winter">Winter</input>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6 class="p-1 border-bottom">Filter By</h6>
+                                <p class="mb-2">Plant Type</p>
+                                <ul>
+                                    <input type="radio" name="typeValue" id="Psuedocereal" value="Psuedocereal">Psuedocereal</input><br>
+                                    <input type="radio" name="typeValue" id="Herb" value="Herb">Herb</input><br>
+                                    <input type="radio" name="typeValue" id="Vegetable" value="Vegetable">Vegetable</input><br>
+                                    <input type="radio" name="typeValue" id="Bean" value="Bean">Bean</input><br>
+                                    <input type="radio" name="typeValue" id="Root" value="Root">Root</input><br>
+                                    <input type="radio" name="typeValue" id="Fruit" value="Fruit">Fruit</input>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6>Life Cycle</h6>
+                                <ul>
+                                    <input type="radio" name="cycleValue" id="Annual" value="Annual">Annual</input><br>
+                                    <input type="radio" name="cycleValue" id="Biennial" value="Biennial">Biennial</input><br>
+                                    <input type="radio" name="cycleValue" id="Perennial" value="Perennial">Perennial</input><br>
+                                </ul>
+                            </div>
+                            <div>
+                                <h6>Hardiness Zone</h6>
+                                <ul>
+                                    <input type="radio" name="zoneValue" id="Zone 1" value="Zone 1">Zone 1</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 2" value="Zone 2">Zone 2</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 3" value="Zone 3">Zone 3</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 4" value="Zone 4">Zone 4</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 5" value="Zone 5">Zone 5</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 6" value="Zone 6">Zone 6</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 7" value="Zone 7">Zone 7</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 8" value="Zone 8">Zone 8</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 9" value="Zone 9">Zone 9</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 10" value="Zone 10">Zone 10</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 11" value="Zone 11">Zone 11</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 12" value="Zone 12">Zone 12</input><br>
+                                    <input type="radio" name="zoneValue" id="Zone 13" value="Zone 13">Zone 13</input><br>
+                                </ul>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                </form>
             </div>
         </div>
+        <div class="col-9 mt-5 me-5">
+            <div class="card border-success">
+
+                {% for plantnames in plantnames %}
+
+                <div class="card border-success">
+                 {{plantnames.plant_name}}
+                 {{plantnames.variety_names}}
+                 {{plantnames.alt_names }}
+                 {{plantnames.plant_type }}
+                </div>
+                <!-- This currently shows when the page is also first loaded, this needs to be worked out, so it only shows if there
+                are actually no results found-->
+                {% else %}
+                <p> The Search has found no results.</p>
+                {% endfor %}
+
+                </div>
+
+        </div>
     </div>
-</div>
+
+
 
 {% endblock %}
