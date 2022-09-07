@@ -3,83 +3,96 @@
 
 {% block body %}
 
-
-    <div class="row">
-        <div class="col-2 mt-5 ms-5 ">
-            <div class="card border-success">
+<div class="row">
+    <div class="col-2 mt-5 ms-5 ">
+        <div class="card border-success p-2 float-left">
+            <form action="{{url_for('calendar')}}" method="post">
+                <div class="filter">
+                    <h5>Filters</h5><span class="fa fa-filter pl-1"></span>
+                </div>
+            <div id="mobile-filter">
                 <div>
-                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter" aria-expanded="false" aria-controls="mobile-filter"><h5>Filters</h5><span class="fa fa-filter pl-1"></span></button>
-                    </div>
-                        <div id="mobile-filter">
-                                <div class ="form-check" form name ="formSeason" method="post" action="" onsubmit="">
-                                    <h6 class="p-1 border-bottom">Season</h6>
-                                    <ul>
-                                        <input type="radio" name="type" id="earlySpring">
-                                            <label for="earlySpring" class="pl-1 pt-sm-0 pt-1">Early Spring</label><br>
-                                        <input type="radio" name="type" id="Spring">
-                                            <label for="Spring" class="pl-1 pt-sm-0 pt-1">Spring</label><br>
-                                        <input type="radio" name="type" id="lateSpring">
-                                            <label for="lateSpring" class="pl-1 pt-sm-0 pt-1">Late Spring</label><br>
-                                        <input type="radio" name="type" id="earlySummer">
-                                            <label for="earlySummer" class="pl-1 pt-sm-0 pt-1">Early Summer</label><br>
-                                        <input type="radio" name="type" id="summer">
-                                            <label for="summer" class="pl-1 pt-sm-0 pt-1">Summer</label><br>
-                                        <input type="radio" name="type" id="lateSummer">
-                                            <label for="lateSummer" class="pl-1 pt-sm-0 pt-1">Late Summer</label><br>
-                                        <input type="radio" name="type" id="earlyFall">
-                                            <label for="earlyFall" class="pl-1 pt-sm-0 pt-1">Early Fall/Autumn</label><br>
-                                        <input type="radio" name="type" id="fallAutumn">
-                                            <label for="fallAutumn" class="pl-1 pt-sm-0 pt-1">Fall/Autumn</label><br>
-                                        <input type="radio" name="type" id="lateFall">
-                                            <label for="lateFall" class="pl-1 pt-sm-0 pt-1">Late Fall/Autumn</label><br>
-                                        <input type="radio" name="type" id="earlyWinter">
-                                            <label for="earlyWinter" class="pl-1 pt-sm-0 pt-1">Early Winter</label><br>
-                                        <input type="radio" name="type" id="winter">
-                                            <label for="winter" class="pl-1 pt-sm-0 pt-1">Winter</label><br>
-                                        <input type="radio" name="type" id="lateWinter">
-                                            <label for="lateWinter" class="pl-1 pt-sm-0 pt-1">Late Winter</label>
-                                    </ul>
-                                </div>
-                                    <div class ="form-check" form name ="formLocation" method="post" action="" onsubmit="">
-                                        <h6 class="p-1 border-bottom">Location</h6>
-                                        <ul>
-                                            <input type="radio" name="type" id="northernHemisphere">
-                                                <label for="northernHemisphere" class="pl-1 pt-sm-0 pt-0">Northern Hemisphere</label><br>
-                                            <input type="radio" name="type" id="southernHemisphere">
-                                                <label for="southernHemisphere" class="pl-1 pt-sm-0 pt-0">Southern Hemisphere</label>
-                                        </ul>
-                                    </div>
-                                <div class ="form-check" form name ="formPlantType" method="post" action="" onsubmit="">
-                                    <h6 class="p-1 border-bottom">Plant Type</h6>
-                                        <ul>
-                                        <input type="radio" name="type" id="Vegetable">
-                                            <label for="Vegetable" class="pl-1 pt-sm-0 pt-0">Vegetable</label><br>
-                                        <input type="radio" name="type" id="Fruit">
-                                            <label for="Fruit" class="pl-1 pt-sm-0 pt-0">Fruit</label><br>
-                                        <input type="radio" name="type" id="Herb">
-                                            <label for="Herb" class="pl-1 pt-sm-0 pt-0">Herb</label><br>
-                                        <input type="radio" name="type" id="pseudocereal">
-                                            <label for="pseudocereal" class="pl-1 pt-sm-0 pt-0">Pseudo-cereal</label><br>
-                                        <input type="radio" name="type" id="Grain">
-                                            <label for="Grain" class="pl-1 pt-sm-0 pt-0">Grain</label><br>
-                                        <input type="radio" name="type" id="Cereal">
-                                            <label for="Cereal" class="pl-1 pt-sm-0 pt-0">Cereal</label><br>
-                                        <input type="radio" name="type" id="Bean">
-                                            <label for="Bean" class="pl-1 pt-sm-0 pt-0">Bean</label><br>
-                                        <input type="radio" name="type" id="Root">
-                                            <label for="Root" class="pl-1 pt-sm-0 pt-0">Root</label>
-                                        </ul>
-                                </div>
-                        </div>
+                    <h6 class="p-1 border-bottom">Season</h6>
+                        <ul>
+                            <input type="radio" name="seasonValue" id="Spring" value="Spring">Spring</input><br>
+                            <input type="radio" name="seasonValue" id="Summer" value="Summer">Summer</input><br>
+                            <input type="radio" name="seasonValue" id="Autumn" value="Fall">Autumn</input><br>
+                            <input type="radio" name="seasonValue" id="Winter" value="Winter">Winter</input>
+                        </ul>
+                </div>
+                <div>
+                    <h6 class="p-1 border-bottom">Plant Type</h6>
+                    <ul>
+                        <input type="radio" name="typeValue" id="Psuedocereal" value="Psuedocereal">Psuedocereal</input><br>
+                        <input type="radio" name="typeValue" id="Herb" value="Herb">Herb</input><br>
+                        <input type="radio" name="typeValue" id="Vegetable" value="Vegetable">Vegetable</input><br>
+                        <input type="radio" name="typeValue" id="Bean" value="Bean">Bean</input><br>
+                        <input type="radio" name="typeValue" id="Root" value="Root">Root</input><br>
+                        <input type="radio" name="typeValue" id="Fruit" value="Fruit">Fruit</input><br>
+                        <input type="radio" name="typeValue" id="All" value="*">All Types</input>
+
+                    </ul>
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
             </div>
+            </form>
         </div>
-        <div class="col mt-5 me-5">
-            <div class="card border-success">
-                <h1>plant</h1>
+    </div>
+    <div class="col mt-5 me-5">
+        <div class="card border-success">
+            <div>
+                <canvas id="chart"></canvas>
+                    <script>
+
+                        // get bar chart canvas
+                      let mychart = document.getElementById("chart").getContext("2d");
+
+                      const config = {
+
+                      };
+
+                      // bar chart data
+                      var barData = {
+                          labels: [{% for labels in labels %}
+                                    {{ labels | safe }}
+                                    {% endfor %}],
+
+                        datasets: [{
+                                data : [{% for values in values %}
+                                        {{ values | safe }},
+                                        {% endfor %}],
+                        }]
+                      };
+
+                      // draw bar chart
+                        let chart = new Chart(mychart, {
+                            type: 'bar',
+                            data: barData,
+                            options: {
+                            indexAxis: 'y',
+                            // Elements options apply to all of the options unless overridden in a dataset
+                            // In this case, we are setting the border of each horizontal bar to be 2px wide
+                            elements: {
+                              bar: {
+                                borderWidth: 2,
+                              }
+                            },
+                            responsive: true,
+                            plugins: {
+                              legend: {
+                                position: 'right',
+                              },
+                              title: {
+                                display: true,
+                                text: "Preferred growing Season",
+                              }
+                            }
+                          },
+                        });
+                    </script>
             </div>
         </div>
     </div>
-
-<iframe id="igraph" scrolling="no" style="border:none;" seamless="seamless" src="C:\\Users\\sara_\\PycharmProjects\\pythonPlantIndexDatabase\\app\\calendarfile.html" height="525" width="100%"></iframe>
+</div>
 
 {% endblock %}

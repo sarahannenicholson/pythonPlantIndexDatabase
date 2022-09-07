@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
-
+from flask import Flask
+from flaskext.mysql import MySQL
 
 # instance identifier - plant-index-database
 # username - admin

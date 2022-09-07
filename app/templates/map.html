@@ -1,105 +1,197 @@
 {% extends 'base.html' %}
 
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+ <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+
 
 
 {% block body %}
-<div class="container">
-    <div class="card m-l-15" style="width: 11rem;">
-        <div class="card-header">
-            Hardiness Zone List
+<div class="row">
+    <div class="col-2 mt-5 ms-5">
+        <div class="card m-l-15 ms-5" style="width: 11rem;">
+            <div class="card-header">
+                Hardiness Zone List
+            </div>
+            <ul class="list-group list-group-flush mx-auto">
+                <li class="list-group-item">
+                    <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck1" checked>
+                    <label class="form-check-label" for="hzonecheck1">Zone 1</label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck2" checked>
+                    <label class="form-check-label" for="hzonecheck2">Zone 2
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck3" checked>
+                    <label class="form-check-label" for="hzonecheck3">Zone 3
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck4" checked>
+                    <label class="form-check-label" for="hzonecheck4">Zone 4
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck5" checked>
+                    <label class="form-check-label" for="hzonecheck5">Zone 5
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck6" checked>
+                    <label class="form-check-label" for="hzonecheck6">Zone 6
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck7" checked>
+                    <label class="form-check-label" for="hzonecheck7">Zone 7
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck8" checked>
+                    <label class="form-check-label" for="hzonecheck8">Zone 8
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck9" checked>
+                    <label class="form-check-label" for="hzonecheck9">Zone 9
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck10" checked>
+                    <label class="form-check-label" for="hzonecheck10">Zone 10
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck11" checked>
+                    <label class="form-check-label" for="hzonecheck11">Zone 11
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck12" checked>
+                    <label class="form-check-label" for="hzonecheck12">Zone 12
+                    </label>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="form-check form-switch ">
+                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck13" checked>
+                    <label class="form-check-label" for="hzonecheck13">Zone 13
+                    </label>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <ul class="list-group list-group-flush mx-auto">
-            <li class="list-group-item">
-                <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck1" checked>
-                <label class="form-check-label" for="hzonecheck1">Zone 1</label>
+    </div>
+    <div class="col mt-5 me-5">
+        <div class="card border-success">
+            <div>
+                <div id="map">
+                    <script>
+
+                        function getColor(d) {
+                            switch (d)
+                            {
+                                //colors for different layers/zones
+                                case '1a': return '#3c3c3c';break;
+                                case '1b': return '#FFFFFF';break;
+                                case '2a': return '#DDDFE3';break;
+                                case '2b': return '#B8BABE';break;
+                                case '3a': return '#EBD8FD';break;
+                                case '3b': return '#F779E0';break;
+                                case '4a': return '#B979D1';break;
+                                case '4b': return '#D6EDFD';break;
+                                case '5a': return '#1139b6';break;
+                                case '5b': return '#77DCFD';break;
+                                case '6a': return '#779FB7';break;
+                                case '6b': return '#DCF1CB';break;
+                                case '7a': return '#A2F97D';break;
+                                case '7b': return '#8AB37D';break;
+                                case '8a': return '#F7F97D';break;
+                                case '8b': return '#F7CE7D';break;
+                                case '9a': return '#da7510';break;
+                                case '9b': return '#CB797D';break;
+                                case '10a': return '#F7B9BD';break;
+                                case '10b': return '#F7797D';break;
+                                case '11a': return '#F7EFD5';break;
+                                case '11b': return '#A2C3B7';break;
+                                case '12a': return '#B87EA4';break;
+                                case '12b': return '#8300A6';break;
+                                case '13a': return '#962F1E';break;
+                                case '13b': return '#751A08';break;
+                                default: return 'red';break;
+                            }
+                        }
+                        function areaStyle(z) {
+                            return {
+                                fillColor: getColor(z),
+                                weight: 0,
+                                opacity: 1,
+                                color: 'green',
+                                dashArray: '0',
+                                fillOpacity: 0.7
+                            }
+                        }
+
+                    <!--      Code for leaflet map goes here          -->
+                    //    map currently resizes awkwardly when making the page smaller
+                    //     TODO:
+                    //    making map more responsive to resizing
+                    var map = L.map('map', {maxZoom: 14, minZoom:2}).setView([-42.5, 171.3], 5);
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '&copy OpenStreetMap',
+                        crossOrigin: true
+                    }).addTo(map);
+
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_5a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('5a')} ).bindPopup('Zone 5a <br> -28.9&deg;C to -26.1&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_5b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('5b')} ).bindPopup('Zone 5b <br>-26.1&deg;C to -23.3&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_6a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('6a')} ).bindPopup('Zone 6a<br>-23.3&deg;C to -20.6&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_6b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('6b')} ).bindPopup('Zone 6b<br>-20.6&deg;C to -17.8&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_7a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('7a')} ).bindPopup('Zone 7a<br>-17.8&deg;C to -15&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_7b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('7b')} ).bindPopup('Zone 7b<br>-15&deg;C to -12.2&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_8a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('8a')} ).bindPopup('Zone 8a<br>-12.2&deg;C to -9.4&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_8b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('8b')} ).bindPopup('Zone 8b<br>-9.4&deg;C to -6.7&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_9a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('9a')} ).bindPopup('Zone 9a<br>-6.7&deg;C to -3.9&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_9b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('9b')} ).bindPopup('Zone 9b<br>-3.9&deg;C to -1.1&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_10a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('10a')} ).bindPopup('Zone 10a<br>-1.1&deg;C to 1.7&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_10b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('10b')} ).bindPopup('Zone 10b<br>1.7&deg;C to 4.4&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_11a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('11a')} ).bindPopup('Zone 11a<br>4.4&deg;C to 7.2&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_11b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('11b')} ).bindPopup('Zone 11b<br>7.2&deg;C to 10&deg;C').addTo(map)});
+                    $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_12a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('12a')} ).bindPopup('Zone 12a<br>10&deg;C to 12.8&deg;C').addTo(map)});
+
+
+                    </script>
                 </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck2" checked>
-                <label class="form-check-label" for="hzonecheck2">Zone 2
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck3" checked>
-                <label class="form-check-label" for="hzonecheck3">Zone 3
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck4" checked>
-                <label class="form-check-label" for="hzonecheck4">Zone 4
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck5" checked>
-                <label class="form-check-label" for="hzonecheck5">Zone 5
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck6" checked>
-                <label class="form-check-label" for="hzonecheck6">Zone 6
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck7" checked>
-                <label class="form-check-label" for="hzonecheck7">Zone 7
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck8" checked>
-                <label class="form-check-label" for="hzonecheck8">Zone 8
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck9" checked>
-                <label class="form-check-label" for="hzonecheck9">Zone 9
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck10" checked>
-                <label class="form-check-label" for="hzonecheck10">Zone 10
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck11" checked>
-                <label class="form-check-label" for="hzonecheck11">Zone 11
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck12" checked>
-                <label class="form-check-label" for="hzonecheck12">Zone 12
-                </label>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="form-check form-switch ">
-                <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck13" checked>
-                <label class="form-check-label" for="hzonecheck13">Zone 13
-                </label>
-                </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

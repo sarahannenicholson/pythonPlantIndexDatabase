@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, EmailField, TextAreaField, SubmitField, validators, ValidationError
+from wtforms import StringField, EmailField, TextAreaField, SubmitField, validators, ValidationError, SelectField
 
 
 # contact us form
@@ -13,5 +13,6 @@ class ContactForm(FlaskForm):
 
 # search form for use with the navbar
 class SearchForm(FlaskForm):
-    searched = StringField("Searched", [validators.InputRequired])
-    submit = SubmitField("Search")
+    searchedPlant = StringField("Searched")
+    submit = SubmitField("Submit")
+
