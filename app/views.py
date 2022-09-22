@@ -25,7 +25,7 @@ def after_request(response):
 @app.route('/')
 def index():
     with DBConfig.engine.begin() as conn:
-        randnum = randint(0, 27)
+        randnum = randint(0, 31)
         # currently takes a randint between 0-27 (current entries in the db) and displays on the home page
         # to show the "plant of the day" etc item
         # to work out at a later date how to specify a specific plant per actual week
@@ -94,13 +94,17 @@ def catalog():
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     with DBConfig.engine.begin() as conn:
+        # initial load of all items in database into search page
         plantnames = conn.execute("SELECT * FROM plant_information")
     if request.method == 'POST':
+        # runs search when the searched button pressed
         seasonValue = '%%' + request.form.get("seasonValue") + '%%'
         typeValue = request.form.get("typeValue")
         cycleValue = request.form.get("cycleValue")
         zoneValue = '%%' + request.form.get("zoneValue") + '%%'  # escape the SQL values
         print(seasonValue, typeValue, cycleValue, zoneValue)
+
+
         with DBConfig.engine.begin() as conn:
             plantnames = conn.execute("SELECT * from plant_information WHERE pref_season LIKE '{0}' "
                                       "AND plant_type LIKE '{1}' "
@@ -122,36 +126,145 @@ def plantmap():
 def calendar():
     labels = []
     values = []
+    seasonValue = ""
+    typeValue = ""
     data = []
     plantnames = None
+    with DBConfig.engine.begin() as conn:
+        # initial load of all items in the database on the calendar
+        plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information")
+        for item in plantnames:
+            labels.append('"' + item[0] + '",')
+            values.append([item[1], item[2]])
     if request.method == 'POST':
-        seasonValue = '%%' + request.form.get("seasonValue") + '%%'
+        # runs search when search button selected
+        labels.clear()
+        values.clear()
+        # get values from inputs
+        seasonValue = request.form.get("seasonValue")
         typeValue = request.form.get("typeValue")
+        print(typeValue)
+        print(seasonValue)
         if typeValue == "*":
+            if seasonValue == "*":
+                print('selected elif')
+                newSeason = '%%' + seasonValue + '%%'
+                newType = '%%' + typeValue + '%%'
+                #  runs search where plant_type all and season all
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information")
+                    for item in plantnames:
+                        print(item)
+                        print('All seasons & all Types1')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+            else:
+                newSeason = '%%' + seasonValue +'%%'
+                newType = '%%' + typeValue +'%%'
+                # runs search where season selected and plant type all
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information "
+                                              "WHERE pref_season LIKE '{0}'".format(newSeason))
+                    for item in plantnames:
+                        print(item)
+                        print('All types')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+        elif seasonValue == "*":
+            if typeValue == "*":
+                # runs search where plant_type all and season all
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute(
+                        "SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information")
+                    for item in plantnames:
+                        print(item)
+                        print('All types2')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+            else:
+                newSeason = '%%' + seasonValue + '%%'
+                newType = '%%' + typeValue + '%%'
+                #  runs search where plant type selected and season all
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information "
+                                              "WHERE plant_type LIKE '{0}'".format(newType))
+                    for item in plantnames:
+                        print(item)
+                        print('All seasons')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+        elif seasonValue is None:
+            # if season value not selected then retrun type_value and search by plant_type WORKS
+            # runs search when noting selected in the season value
+            # newSeason = '%%' + seasonValue + '%%'
+            if typeValue is None:
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information")
+                    for item in plantnames:
+                        print(item)
+                        print('No type No Season')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+            else:
+                newType = '%%' + typeValue + '%%'
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information "
+                                              "WHERE plant_type LIKE '{0}'".format(newType))
+                    for item in plantnames:
+                        print(item)
+                        print('No season')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+        elif typeValue is None:
+            #  if type_value not selected then return season_value and search by pref_season FAILS 169
+            # runs search when noting selected in the type value
+            if seasonValue is None:
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information")
+                    for item in plantnames:
+                        print(item)
+                        print('No type No Season')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+            else:
+                newSeason = '%%' + seasonValue + '%%'
+                # newType = '%%' + typeValue + '%%'
+                labels.clear()
+                values.clear()
+                with DBConfig.engine.begin() as conn:
+                    plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information "
+                                              "WHERE pref_season LIKE '{0}'".format(newSeason))
+                    for item in plantnames:
+                        print(item)
+                        print('No type')
+                        labels.append('"' + item[0] + '",')
+                        values.append([item[1], item[2]])
+        else:
+            # runs search when both plant type and season selected
+            newSeason = '%%' + seasonValue + '%%'
+            newType = '%%' + typeValue + '%%'
+            labels.clear()
+            values.clear()
             with DBConfig.engine.begin() as conn:
-                plantnames = conn.execute("SELECT plant_name, plant_id, plant_type FROM plant_information "
-                                          "WHERE pref_season LIKE '{0}'".format(seasonValue))
+                plantnames = conn.execute("SELECT plant_name, pref_season_num1, pref_season_num2 FROM plant_information WHERE pref_season LIKE '{0}'"
+                                              "AND plant_type LIKE '{1}'".format(newSeason, newType))
                 for item in plantnames:
-                    print(item)
                     labels.append('"' + item[0] + '",')
-                    values.append(item[1])
-                    print(labels)
-                    print(values)
-        with DBConfig.engine.begin() as conn:
-            plantnames = conn.execute("SELECT plant_name, plant_id FROM plant_information WHERE pref_season LIKE '{0}'"
-                                      "AND plant_type LIKE '{1}'".format(seasonValue, typeValue))
-            for item in plantnames:
-                print(item)
-                # data.append(['"' + item.plant_name + '",', item.plant_id])
-                labels.append('"' + item[0] + '",')
-                # TODO:
-                # this needs to be formatted so that there is a comma seperating the list when taken across to the .js page
-                # this will need to be done in javascript
-                values.append(item[1])
-                print(labels)
-                print(values)
-            # data.append([plantnames.plant_name, plantnames.plant_id])
-            # print(data)
+                    values.append([item[1], item[2]])
     return render_template('calendar.html', title='Planting Calendar', labels=labels, values=values)
 
 
@@ -162,7 +275,7 @@ def calendar():
 @app.route('/plantinfo/<plant_names>')
 def plantinfo(plant_names):
     with DBConfig.engine.begin() as conn:
-        plantnames = conn.execute("SELECT * FROM plant_information")
+        plantnames = conn.execute("SELECT * FROM plant_information WHERE plant_name = '{0}'".format(plant_names))
     return render_template('plantinfo.html', plantnames=plantnames, plant_names=plant_names)
 
 

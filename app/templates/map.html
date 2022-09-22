@@ -1,114 +1,33 @@
-{% extends 'base.html' %}
 
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-   crossorigin=""/>
- <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-   crossorigin=""></script>
+{% extends 'base.html' %}
 
 
 
 {% block body %}
 <div class="row">
     <div class="col-2 mt-5 ms-5">
-        <div class="card m-l-15 ms-5" style="width: 11rem;">
+        <div class="card m-l-15" >
             <div class="card-header">
-                Hardiness Zone List
+                <b>Color Reference Chart</b>
             </div>
-            <ul class="list-group list-group-flush mx-auto">
-                <li class="list-group-item">
-                    <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck1" checked>
-                    <label class="form-check-label" for="hzonecheck1">Zone 1</label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck2" checked>
-                    <label class="form-check-label" for="hzonecheck2">Zone 2
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck3" checked>
-                    <label class="form-check-label" for="hzonecheck3">Zone 3
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck4" checked>
-                    <label class="form-check-label" for="hzonecheck4">Zone 4
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck5" checked>
-                    <label class="form-check-label" for="hzonecheck5">Zone 5
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck6" checked>
-                    <label class="form-check-label" for="hzonecheck6">Zone 6
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck7" checked>
-                    <label class="form-check-label" for="hzonecheck7">Zone 7
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck8" checked>
-                    <label class="form-check-label" for="hzonecheck8">Zone 8
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck9" checked>
-                    <label class="form-check-label" for="hzonecheck9">Zone 9
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck10" checked>
-                    <label class="form-check-label" for="hzonecheck10">Zone 10
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck11" checked>
-                    <label class="form-check-label" for="hzonecheck11">Zone 11
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck12" checked>
-                    <label class="form-check-label" for="hzonecheck12">Zone 12
-                    </label>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="form-check form-switch ">
-                    <input class="form-check-input" type="checkbox" role="switch" id="hzonecheck13" checked>
-                    <label class="form-check-label" for="hzonecheck13">Zone 13
-                    </label>
-                    </div>
-                </li>
-            </ul>
+            <table class="table table-bordered table-condensed">
+                <thead><tr><th>Hardiness Zone</th><th>Color</th></tr></thead>
+                <tr><td>Zone 5a</td><td class="hz5a"></td></tr>
+                <tr><td>Zone 5b</td><td class="hz5b"></td></tr>
+                <tr><td>Zone 6a</td><td class="hz6a"></td></tr>
+                <tr><td>Zone 6b</td><td class="hz6b"></td></tr>
+                <tr><td>Zone 7a</td><td class="hz7a"></td></tr>
+                <tr><td>Zone 7b</td><td class="hz7b"></td></tr>
+                <tr><td>Zone 8a</td><td class="hz8a"></td></tr>
+                <tr><td>Zone 8b</td><td class="hz8b"></td></tr>
+                <tr><td>Zone 9a</td><td class="hz9a"></td></tr>
+                <tr><td>Zone 9b</td><td class="hz9b"></td></tr>
+                <tr><td>Zone 10a</td><td class="hz10a"></td></tr>
+                <tr><td>Zone 10b</td><td class="hz10b"></td></tr>
+                <tr><td>Zone 11a</td><td class="hz11a"></td></tr>
+                <tr><td>Zone 11b</td><td class="hz11b"></td></tr>
+                <tr><td>Zone 12a</td><td class="hz12a"></td></tr>
+            </table>
         </div>
     </div>
     <div class="col mt-5 me-5">
@@ -117,37 +36,38 @@
                 <div id="map">
                     <script>
 
+
                         function getColor(d) {
                             switch (d)
                             {
                                 //colors for different layers/zones
-                                case '1a': return '#3c3c3c';break;
-                                case '1b': return '#FFFFFF';break;
-                                case '2a': return '#DDDFE3';break;
-                                case '2b': return '#B8BABE';break;
-                                case '3a': return '#EBD8FD';break;
-                                case '3b': return '#F779E0';break;
-                                case '4a': return '#B979D1';break;
-                                case '4b': return '#D6EDFD';break;
-                                case '5a': return '#1139b6';break;
-                                case '5b': return '#77DCFD';break;
-                                case '6a': return '#779FB7';break;
-                                case '6b': return '#DCF1CB';break;
-                                case '7a': return '#A2F97D';break;
-                                case '7b': return '#8AB37D';break;
-                                case '8a': return '#F7F97D';break;
-                                case '8b': return '#F7CE7D';break;
-                                case '9a': return '#da7510';break;
-                                case '9b': return '#CB797D';break;
-                                case '10a': return '#F7B9BD';break;
-                                case '10b': return '#F7797D';break;
-                                case '11a': return '#F7EFD5';break;
-                                case '11b': return '#A2C3B7';break;
-                                case '12a': return '#B87EA4';break;
-                                case '12b': return '#8300A6';break;
-                                case '13a': return '#962F1E';break;
-                                case '13b': return '#751A08';break;
-                                default: return 'red';break;
+                                case '1a': return '#3c3c3c';
+                                case '1b': return '#FFFFFF';
+                                case '2a': return '#DDDFE3';
+                                case '2b': return '#B8BABE';
+                                case '3a': return '#EBD8FD';
+                                case '3b': return '#F779E0';
+                                case '4a': return '#B979D1';
+                                case '4b': return '#D6EDFD';
+                                case '5a': return '#1139b6';
+                                case '5b': return '#77DCFD';
+                                case '6a': return '#779FB7';
+                                case '6b': return '#DCF1CB';
+                                case '7a': return '#A2F97D';
+                                case '7b': return '#8AB37D';
+                                case '8a': return '#F7F97D';
+                                case '8b': return '#F7CE7D';
+                                case '9a': return '#da7510';
+                                case '9b': return '#CB797D';
+                                case '10a': return '#F7B9BD';
+                                case '10b': return '#F7797D';
+                                case '11a': return '#F7EFD5';
+                                case '11b': return '#A2C3B7';
+                                case '12a': return '#B87EA4';
+                                case '12b': return '#8300A6';
+                                case '13a': return '#962F1E';
+                                case '13b': return '#751A08';
+                                default: return 'red';
                             }
                         }
                         function areaStyle(z) {
@@ -165,11 +85,14 @@
                     //    map currently resizes awkwardly when making the page smaller
                     //     TODO:
                     //    making map more responsive to resizing
-                    var map = L.map('map', {maxZoom: 14, minZoom:2}).setView([-42.5, 171.3], 5);
+
+                    var map = L.map('map', {maxZoom: 14, minZoom:2, zoomSnap: 1.75}).setView([-42.5, 171.3], 5);
                     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        attribution: '&copy OpenStreetMap',
+                        attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
                         crossOrigin: true
                     }).addTo(map);
+
+
 
                     $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_5a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('5a')} ).bindPopup('Zone 5a <br> -28.9&deg;C to -26.1&deg;C').addTo(map)});
                     $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_5b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('5b')} ).bindPopup('Zone 5b <br>-26.1&deg;C to -23.3&deg;C').addTo(map)});
@@ -187,11 +110,66 @@
                     $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_11b.geojson', function(Data){L.geoJson( Data, {style: areaStyle('11b')} ).bindPopup('Zone 11b<br>7.2&deg;C to 10&deg;C').addTo(map)});
                     $.getJSON('https://plantdatabaselocationfiles.s3.us-east-2.amazonaws.com/NZ_HZ_12a.geojson', function(Data){L.geoJson( Data, {style: areaStyle('12a')} ).bindPopup('Zone 12a<br>10&deg;C to 12.8&deg;C').addTo(map)});
 
+                    function csc() {
+                        var x = $('#map').offset();
+                        $('html, body').animate({scrollTop: x.top}, "slow");
+                    }
+
+                    function pz(x,y) {
+                        map.panTo(L.latLng(y, x));
+                        map.setZoom(13);
+                    }
 
                     </script>
                 </div>
             </div>
         </div>
+        <div class= "mt-3">
+            <table class="table table-bordered table-condensed">
+                <thead><tr><th>Location</th><th>Hardiness Zone</th><th>Location</th><th>Hardiness Zone</th><th>Location</th><th>Hardiness Zone</th><th>Location</th><th>Hardiness Zone</th></tr></thead>
+                <tr><td><a href="javascript:pz(171.750,-43.902,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Ashburton Hardiness Zone 9b"></i></a>Ashburton</td><td class="hz9b">Zone 9b: -3.9&deg;C to -1.1&deg;C</td>
+                <td><a href="javascript:pz(174.763,-36.852,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Auckland Hardiness Zone 10b"></i></a>Auckland</td><td class="hz10b">Zone 10b: 1.7&deg;C to 4.4&deg;C</td>
+                <td><a href="javascript:pz(173.955,-41.512,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Blenheim Hardiness Zone 10b"></i></a>Blenheim</td><td class="hz10b">Zone 10b: 1.7&deg;C to 4.4&deg;C</td>
+                <td><a href="javascript:pz(175.469,-37.892,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Cambridge Hardiness Zone 10a"></i></a>Cambridge</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td></tr>
+
+                <tr><td><a href="javascript:pz(172.637,-43.531,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Christchurch Hardiness Zone 9a"></i></a>Christchurch</td><td class="hz9a">Zone 9a: -6.7&deg;C to -3.9&deg;C</td>
+                <td><a href="javascript:pz(170.503,-45.874,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Dunedin Hardiness Zone 10b"></i></a>Dunedin</td><td class="hz10b">Zone 10b: 1.7&deg;C to 4.4&deg;C</td>
+                <td><a href="javascript:pz(175.565,-40.226,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Feilding Hardiness Zone 9b"></i></a>Feilding</td><td class="hz9b">Zone 9b: -3.9&deg;C to -1.1&deg;C</td>
+                <td><a href="javascript:pz(178.021,-38.661,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Gisborne Hardiness Zone 10a"></i></a>Gisborne</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td></tr>
+
+                <tr><td><a href="javascript:pz(171.208,-42.450,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Greymouth Hardiness Zone 9b"></i></a>Greymouth</td><td class="hz9b">Zone 9b: -3.9&deg;C to -1.1&deg;C</td>
+                <td><a href="javascript:pz(175.282,-37.788,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Hamilton Hardiness Zone 10a"></i></a>Hamilton</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(176.845,-39.643,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Hastings Hardiness Zone 10a"></i></a>Hastings</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(176.878,-39.670,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Havelock North Hardiness Zone 10a"></i></a>Havelock North</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td></tr>
+
+                <tr><td><a href="javascript:pz(174.285,-39.582,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Hawera Hardiness Zone 10a"></i></a>Hawera</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(168.348,-46.412,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Invercargill Hardiness Zone 9a"></i></a>Invercargill</td><td class="hz9a">Zone 9a: -6.7&deg;C to -3.9&deg;C</td>
+                <td><a href="javascript:pz(175.287,-40.622,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Levin Hardiness Zone 10a"></i></a>Levin</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(174.906,-41.213,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Lower Hutt Hardiness Zone 10b"></i></a>Lower Hutt</td><td class="hz10b">Zone 10b: 1.7&deg;C to 4.4&deg;C</td></tr>
+
+                <tr><td><a href="javascript:pz(175.659,-40.950,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Masterton Hardiness Zone 10a"></i></a>Masterton</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(176.918,-39.491,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Napier Hardiness Zone 10a"></i></a>Napier</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(173.284,-41.271,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Nelson Hardiness Zone 10a"></i></a>Nelson</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(174.081,-39.058,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to New Plymouth Hardiness Zone 10a"></i></a>New Plymouth</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td></tr>
+
+                <tr><td><a href="javascript:pz(170.968,-45.100,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Oamaru Hardiness Zone 10a"></i></a>Oamaru</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(175.611,-40.356,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Palmerston North Hardiness Zone 9b"></i></a>Palmerston North</td><td class="hz9b">Zone 9b: -3.9&deg;C to -1.1&deg;C</td>
+                <td><a href="javascript:pz(171.251,-44.393,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Timaru Hardiness Zone 10a"></i></a>Timaru</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(175.871,-38.217,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Tokoroa Hardiness Zone 9b"></i></a>Tokoroa</td><td class="hz9b">Zone 9b: -3.9&deg;C to -1.1&deg;C</td></tr>
+
+                <tr><td><a href="javascript:pz(175.070,-41.124,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Upper Hutt Hardiness Zone 10a"></i></a>Upper Hutt</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(175.064,-40.876,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Waikanae Hardiness Zone 10b"></i></a>Waikanae</td><td class="hz10b">Zone 10b: 1.7&deg;C to 4.4&deg;C</td>
+                <td><a href="javascript:pz(174.777,-41.289,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Wellington Hardiness Zone 10b"></i></a>Wellington</td><td class="hz10b">Zone 10b: 1.7&deg;C to 4.4&deg;C</td>
+                    <td><a href="javascript:pz(176.995,-37.952,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Whakatane Hardiness Zone 10a"></i></a>Whakatane</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td></tr>
+
+                <tr><td><a href="javascript:pz(175.054,-39.935,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Whanganui Hardiness Zone 10a"></i></a>Whanganui</td><td class="hz10a">Zone 10a: -1.1&deg;C to 1.7&deg;C</td>
+                <td><a href="javascript:pz(174.321,-35.728,map,11);csc();"><i class="fa fa-search-plus" title="Zoom to Whangarei Hardiness Zone 10b"></i></a>Whangarei</td><td class="hz10b">Zone 10b: 1.7&deg;C to 4.4&deg;C</td></tr>
+
+            </table>
+        </div>
     </div>
 </div>
+
+
+
 {% endblock %}

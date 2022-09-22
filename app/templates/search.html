@@ -64,27 +64,33 @@
                 </form>
             </div>
         </div>
-        <div class="col-9 mt-5 me-5">
-            <div class="card border-success">
+<!--        beginning of code for the search results card-->
+<!--        results box outer border -->
+        <div class="col-9 mt-5 me-5 card border-success">
+<!--            new row created in results box-->
+            <div class="row">
+            {% for plantnames in plantnames %}
+<!--                new -->
+                            <div class="card border-success mb-2 mx-2" style="width: 15rem">
+                                <img class="card-img-left" src="{{plantnames.image_link}}" alt="Card Image Cap">
+                                <div class="card-body">
+                                    <b>Plant Name: </b><a href="/plantinfo/{{plantnames.plant_name}}">{{plantnames.plant_name}}<br></a>
+                                    <b> Family Name: </b>{{plantnames.family_name}}<br>
+                                     <b>Plant Type: </b>{{plantnames.plant_type }}<br>
+                                    <b>Life Cycle: </b>{{plantnames.life_cycle }}<br>
+                                </div>
+                            </div>
+                                {% else %}
+                                <p> The Search has found no results.</p>
+                                {% endfor %}
+                        <!-- This currently shows when the page is also first loaded, this needs to be worked out, so it only shows if there
+                        are actually no results found-->
 
-                {% for plantnames in plantnames %}
-
-                <div class="card border-success">
-                 {{plantnames.plant_name}}
-                 {{plantnames.variety_names}}
-                 {{plantnames.alt_names }}
-                 {{plantnames.plant_type }}
+                    </div>
                 </div>
-                <!-- This currently shows when the page is also first loaded, this needs to be worked out, so it only shows if there
-                are actually no results found-->
-                {% else %}
-                <p> The Search has found no results.</p>
-                {% endfor %}
-
-                </div>
-
+            </div>
         </div>
-    </div>
+
 
 
 
