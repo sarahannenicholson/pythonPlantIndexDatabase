@@ -4,91 +4,146 @@
 {% block body %}
 
 <div class="row">
-    <div class="col-2 mt-5 ms-5 ">
-        <div class="card border-success p-2 float-left">
-            <form action="{{url_for('calendar')}}" method="post">
-                <div class="filter">
-                    <h5>Filters</h5><span class="fa fa-filter pl-1"></span>
-                </div>
-            <div id="mobile-filter">
-                <div>
-                    <h6 class="p-1 border-bottom">Season</h6>
+    <div class="col-1 mt-5 ms-5 ">
+            <div class="card border-success p-3 float-left">
+                <form action="{{url_for('calendar')}}" method="post">
+                    <div class="filter">
+                        <h5>Filters</h5><span class="fa fa-filter pl-1"></span>
+                    </div>
+                <div id="mobile-filter">
+                    <div>
+                        <h6 class="p-1 border-bottom">Season</h6>
+                            <ul>
+                                <input type="radio" name="seasonValue" id="Spring" value="Spring">Spring</input><br>
+                                <input type="radio" name="seasonValue" id="Summer" value="Summer">Summer</input><br>
+                                <input type="radio" name="seasonValue" id="Autumn" value="Fall">Autumn</input><br>
+                                <input type="radio" name="seasonValue" id="Winter" value="Winter">Winter</input><br>
+                                <input type="radio" name="seasonValue" id="AllSeasons" value="*">All Seasons</input>
+                            </ul>
+                    </div>
+                    <div>
+                        <h6 class="p-1 border-bottom">Plant Type</h6>
                         <ul>
-                            <input type="radio" name="seasonValue" id="Spring" value="Spring">Spring</input><br>
-                            <input type="radio" name="seasonValue" id="Summer" value="Summer">Summer</input><br>
-                            <input type="radio" name="seasonValue" id="Autumn" value="Fall">Autumn</input><br>
-                            <input type="radio" name="seasonValue" id="Winter" value="Winter">Winter</input>
+                            <input type="radio" name="typeValue" id="Psuedocereal" value="Psuedocereal">Psuedocereal</input><br>
+                            <input type="radio" name="typeValue" id="Herb" value="Herb">Herb</input><br>
+                            <input type="radio" name="typeValue" id="Vegetable" value="Vegetable">Vegetable</input><br>
+                            <input type="radio" name="typeValue" id="Bean" value="Legume">Bean</input><br>
+                            <input type="radio" name="typeValue" id="Root" value="Root">Root</input><br>
+                            <input type="radio" name="typeValue" id="Fruit" value="Fruit">Fruit</input><br>
+                            <input type="radio" name="typeValue" id="All" value="*">All Types</input>
                         </ul>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
                 </div>
-                <div>
-                    <h6 class="p-1 border-bottom">Plant Type</h6>
-                    <ul>
-                        <input type="radio" name="typeValue" id="Psuedocereal" value="Psuedocereal">Psuedocereal</input><br>
-                        <input type="radio" name="typeValue" id="Herb" value="Herb">Herb</input><br>
-                        <input type="radio" name="typeValue" id="Vegetable" value="Vegetable">Vegetable</input><br>
-                        <input type="radio" name="typeValue" id="Bean" value="Bean">Bean</input><br>
-                        <input type="radio" name="typeValue" id="Root" value="Root">Root</input><br>
-                        <input type="radio" name="typeValue" id="Fruit" value="Fruit">Fruit</input><br>
-                        <input type="radio" name="typeValue" id="All" value="*">All Types</input>
-
-                    </ul>
-                </div>
-                <button type="submit" class="btn btn-primary">Search</button>
+                </form>
             </div>
-            </form>
-        </div>
     </div>
-    <div class="col mt-5 me-5">
-        <div class="card border-success">
-            <div>
-                <canvas id="chart"></canvas>
+    <div class="col mt-5 ms-5 me-5">
+                <canvas id="chart" class="card border-success"></canvas>
                     <script>
 
-                        // get bar chart canvas
-                      let mychart = document.getElementById("chart").getContext("2d");
+                        //useable for bar chart type graph
+                        // var chartColors = {
+                        //     spring: 'rgb(152,248,134)',
+                        //     summer: 'rgb(229,126,139)',
+                        //     autumn: 'rgb(227,178,121)',
+                        //     winter: 'rgb(129,175,229)',
+                        //     black: 'rgb(21,1,2)',
+                        // };
 
-                      const config = {
+                      var yLabels = {
 
-                      };
+                          1 :'Early Spring',
+                          2: 'Spring',
+                          3: 'Late Spring',
+                          4: 'Early Summer',
+                          5: 'Summer',
+                          6:'Late Summer',
+                          7:'Early Autumn',
+                          8:'Autumn',
+                          9:'Late Autumn',
+                          10:'Early Winter',
+                          11:'Winter',
+                          12:'Late Winter',
+                      }
 
-                      // bar chart data
-                      var barData = {
-                          labels: [{% for labels in labels %}
-                                    {{ labels | safe }}
-                                    {% endfor %}],
 
-                        datasets: [{
-                                data : [{% for values in values %}
-                                        {{ values | safe }},
-                                        {% endfor %}],
-                        }]
-                      };
-
-                      // draw bar chart
-                        let chart = new Chart(mychart, {
-                            type: 'bar',
-                            data: barData,
-                            options: {
-                            indexAxis: 'y',
-                            // Elements options apply to all of the options unless overridden in a dataset
-                            // In this case, we are setting the border of each horizontal bar to be 2px wide
-                            elements: {
-                              bar: {
-                                borderWidth: 2,
-                              }
-                            },
-                            responsive: true,
-                            plugins: {
-                              legend: {
-                                position: 'right',
-                              },
-                              title: {
-                                display: true,
-                                text: "Preferred growing Season",
-                              }
-                            }
+                      var settings = {
+                          type: "bar",
+                          data: {
+                              labels: [{% for labels in labels %}{{ labels | safe }}{% endfor %}],
+                                datasets: [{
+                                  label: "Preferred sowing season",
+                                    data: [{% for values in values %}{{ values | safe }},{% endfor %}],
+                                    //  data: [1,2,3,4,5,6,7,8,9,10],
+                                    //  data: [[1,4], [3,6], [-2,4]],
+                                    backgroundColor: [
+                                        // chartColors.black //useable for barr chart type graph
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)',
+                                        'rgba(255, 205, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(197,145,197,0.2)'
+                                    ],
+                                }]
                           },
-                        });
+
+                          options: {
+                              indexAxis: 'y',
+                              legend: {
+                                  display: false
+                              },
+                              scales: {
+                                  x: {
+                                      ticks: {
+                                          max: 12,
+                                            min: 1,
+                                            stepSize: 0.5,
+                                              beginAtZero: true,
+                                              callback: function(value, index, values){
+                                                  return yLabels[value];
+                                                  }
+                                              }
+                                      }
+                                  }
+                              }
+                      }
+
+                      var ctx = document.getElementById("chart").getContext('2d');
+                      var myChart = new Chart(ctx, settings);
+
+
+
+                      // this variable to be used to automatically select color based on the season
+                        //this is no longer usable as we have now shifted to a gnatt chart type rather
+                        //than the original bar chart type
+
+                      // var springValue = 3;
+                      // var dataset = myChart.data.datasets[0];
+                      // for (var i = 0; i < dataset.data.length; i++) {
+                      //     if (dataset.data[i] <= 3) {
+                      //       dataset.backgroundColor[i] = chartColors.spring;
+                      //     }
+                      //     else if (dataset.data[i] <= 6 && dataset.data[i] > 3) {
+                      //         dataset.backgroundColor[i] = chartColors.summer;
+                      //     }
+                      //     else if (dataset.data[i] <= 9 && dataset.data[i] > 6) {
+                      //         dataset.backgroundColor[i] = chartColors.autumn;
+                      //     }
+                      //     else if (dataset.data[i] <= 12 && dataset.data[i] > 9) {
+                      //         dataset.backgroundColor[i] = chartColors.winter;
+                      //     }
+                      //     else {
+                      //         dataset.backgroundColor[i] = chartColors.black;
+                      //     }
+                      //
+                      // }
+                      //
+                      // myChart.update();
+
+
                     </script>
             </div>
         </div>
