@@ -92,3 +92,10 @@ form input#submit:hover{
 .hz11b{background-color:#A2C3B7;}
 .hz12a{background-color:#B87EA4;}
         #ib_content{color:#fff;}
+
+
+#chart-wrapper {
+  display: inline-block;
+  position: relative;
+  width: 95%;
+}
