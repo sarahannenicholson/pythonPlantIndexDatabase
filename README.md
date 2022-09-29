@@ -21,10 +21,10 @@ This application is intended for users who are planning, thinking about or curre
 
 <br>
 
-•	Create a website that has these features
-o	 Allows the user to select their location and based off this location will provide data on
-	Planting schedules for selected crop/plant types 
-	Companion planting – when one plant is selected allows for other plants to be suggest for planting in companionship to this
+•	Create a website that has these features<br>
+o	 Allows the user to select their location and based off this location will provide data on<br><br>
+	Planting schedules for selected crop/plant types <br><br>
+	Companion planting – when one plant is selected allows for other plants to be suggest for planting in companionship to this<br><br>
 	Seed or Seedling starter suggestions
 	Times to sow depending on if a seed is being sown or a seedling is going to ground
 	Nutrient guides for crops, what they specifically need/thrive with
