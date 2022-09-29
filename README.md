@@ -21,14 +21,14 @@ This application is intended for users who are planning, thinking about or curre
 <br>
 
 •	Create a website that has these features<br>
-o	 Allows the user to select their location and based off this location will provide data on<br>
-	Planting schedules for selected crop/plant types <br>
-	Companion planting – when one plant is selected allows for other plants to be suggest for planting in companionship to this<br>
-	Seed or Seedling starter suggestions<br>
-	Times to sow depending on if a seed is being sown or a seedling is going to ground<br>
-	Nutrient guides for crops, what they specifically need/thrive with<br>
-	Crop rotation guide – what to plant after your harvest to maximize garden bed usage<br>
-o	Tells the user their hardiness zone and when their optimum planting time is<br>
+&ensp;o	 Allows the user to select their location and based off this location will provide data on<br>
+&ensp;&ensp;	Planting schedules for selected crop/plant types <br>
+&ensp;&ensp;	Companion planting – when one plant is selected allows for other plants to be suggest for planting in companionship to this<br>
+&ensp;&ensp;	Seed or Seedling starter suggestions<br>
+&ensp;&ensp;	Times to sow depending on if a seed is being sown or a seedling is going to ground<br>
+&ensp;&ensp;	Nutrient guides for crops, what they specifically need/thrive with<br>
+&ensp;	Crop rotation guide – what to plant after your harvest to maximize garden bed usage<br>
+&ensp;o	Tells the user their hardiness zone and when their optimum planting time is<br>
 •	The project cannot exceed the allotted time frame (Completion by the 29th of September 2022)<br>
 •	The website is to connect to the plant database via AWS and be hosted in the cloud<br>
 •	The project cannot exceed the given budget of $500.00 NZD<br><br>
