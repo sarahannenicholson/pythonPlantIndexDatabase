@@ -8,7 +8,7 @@ Plant Index Database project for find Project
  # Contents
  
  - Introduction
- - Requireements
+ - Requirements
  - Installation
  - Configuration
  - License
@@ -42,25 +42,25 @@ With this project we are trying to achieve the following objectives:<br>
 
 ## Requirements
 
-Requirements for the applicaiton are as follows:
+Requirements for the application are as follows:
 
 Hosting service (This application is configure to run on AWS Elastic Beanstalk)<br>
-DBMS (While the database is not included in the GIT repository, the application is developed to run in conjenction with an database)<br>
+DBMS (While the database is not included in the GIT repository, the application is developed to run in conjunction with an database)<br>
 
 ---
 
 ## Installation
 
-For installation of this application on local, nothing is sepcfifically is required.<br><br>
+For installation of this application on local, nothing is specifically is required.<br><br>
 
-For installation of this application on AWS Elastic Beanstalk, please do not change the structre of the files and directories as they are currently formatted correctly. 
+For installation of this application on AWS Elastic Beanstalk, please do not change the structure of the files and directories as they are currently formatted correctly. 
 
 ---
 
 ## Configuration
 
-Applcaiotn is currently configured to work on AWS Elastic Beanstalk. If you wish to use the applicaton there, and no changes are made, a zipped folder containning all present files will work correctly. <br> 
-If you want to edit the applcation and change the code, alterations will need to be made to the config files in the .ebextensions folder. <br>(Please note that the files will be used in order, so file 01 will be used before 02 etc)
+Application is currently configured to work on AWS Elastic Beanstalk. If you wish to use the application there, and no changes are made, a zipped folder containing all present files will work correctly. <br> 
+If you want to edit the application and change the code, alterations will need to be made to the config files in the .ebextensions folder. <br>(Please note that the files will be used in order, so file 01 will be used before 02 etc)
 
 
 ---
@@ -68,4 +68,4 @@ If you want to edit the applcation and change the code, alterations will need to
 
 [![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)
 
-To the extent possible under law, all rights have been waived in relation to copyright and related or neighboring rights to this work.
+To the extent possible under law, all rights have been waived in relation to copyright and related or neighbouring rights to this work.
