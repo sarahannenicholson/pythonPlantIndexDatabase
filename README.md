@@ -11,7 +11,6 @@ Plant Index Database project for find Project
  - Requireements
  - Installation
  - Configuration
- - Maintainers
  - License
 
 ---
@@ -32,7 +31,9 @@ o	 Allows the user to select their location and based off this location will pro
 o	Tells the user their hardiness zone and when their optimum planting time is<br>
 •	The project cannot exceed the allotted time frame (Completion by the 29th of September 2022)<br>
 •	The website is to connect to the plant database via AWS and be hosted in the cloud<br>
-•	The project cannot exceed the given budget of $500.00 NZD<br>
+•	The project cannot exceed the given budget of $500.00 NZD<br><br>
+
+
 With this project we are trying to achieve the following objectives:<br>
 •	Creation of a website to aid new growers with in getting started towards sowing and growing their own produce<br>
 •	Giving existing growers tips and tricks on how to maximize their existing yields<br>
@@ -43,23 +44,23 @@ With this project we are trying to achieve the following objectives:<br>
 
 Requirements for the applicaiton are as follows:
 
-Hosting service (This application is configure to run on AWS Elastic Beanstalk)
-DBMS (While the database is not included in the GIT repository, the application is developed to run in conjenction with an database)
+Hosting service (This application is configure to run on AWS Elastic Beanstalk)<br>
+DBMS (While the database is not included in the GIT repository, the application is developed to run in conjenction with an database)<br>
 
 ---
 
 ## Installation
 
-This applcaiot
+For installation of this application on local, nothing is sepcfifically is required.<br><br>
+
+For installation of this application on AWS Elastic Beanstalk, please do not change the structre of the files and directories as they are currently formatted correctly. 
 
 ---
 
 ## Configuration
 
-
-
----
-## Maintainers
+Applcaiotn is currently configured to work on AWS Elastic Beanstalk. If you wish to use the applicaton there, and no changes are made, a zipped folder containning all present files will work correctly. <br> 
+If you want to edit the applcation and change the code, alterations will need to be made to the config files in the .ebextensions folder. <br>(Please note that the files will be used in order, so file 01 will be used before 02 etc)
 
 
 ---
