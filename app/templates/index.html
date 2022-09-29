@@ -14,7 +14,6 @@
 
 
 <div class="container-fluid">
-
         <div class="row">
         <div class="col">
             <div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center bg-light">
@@ -31,23 +30,24 @@
         </div>
     </div>
 
-        <div class="row">
+    <div class="row">
       <div class="col">
         <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 py-3">
-                <h3 class="display-5 text-bg-dark">Plant Spotlight</h3>
-                <h4 class="text-bg-dark">{{plantname.plant_name}}</h4>
-                <p class="lead">{{plantname.general_info}}</p>
-                <a class="btn btn-outline-secondary" href="/plantinfo/{{plantname.plant_name}}">Link</a>
-            </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-                <h3 class="display-5 text-bg-dark">Check where you are in the world</h3>
-                <p>Want to see what zone you are? Want to see what plants work best in your area? Why not take a look here!</p><br>
-                <a class="btn btn-outline-secondary" href={{url_for('plantmap')}}>Link</a>
+            <div class="row">
+                <div class="col">
+                    <div class="my-3 py-3">
+                    <h3 class="display-5 text-bg-dark">Check where you are in the world</h3>
+                    <p>Want to see what zone you are? <br><br>Want to see what plants work best in your area? <br><br>Why not take a look at our interactive Zone map to see what zones extend where!</p><br>
+                    <a class="btn btn-outline-secondary" href={{url_for('plantmap')}}>Link</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="my-3 p-3">
+                    <h3 class="display-5 text-bg-dark">Plant Spotlight</h3>
+                    <h4 class="text-bg-dark">{{plantname.plant_name}}</h4>
+                    <p class="lead">{{plantname.general_info}}</p>
+                    <a class="btn btn-outline-secondary" href="/plantinfo/{{plantname.plant_name}}">Link</a></div>
+                </div>
             </div>
         </div>
       </div>

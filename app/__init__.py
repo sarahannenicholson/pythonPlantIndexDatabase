@@ -5,14 +5,14 @@ from flaskext.mysql import MySQL
 
 
 # creating the flask application
-app = Flask(__name__)
-app.config.from_object(DBConfig)
+application = Flask(__name__)
+application.config.from_object(DBConfig)
 
 # variable for database
-db = SQLAlchemy(app)
+db = SQLAlchemy(application)
 
 mysql = MySQL()
-mysql.init_app(app)
+mysql.init_app(application)
 
 from app import views
 
