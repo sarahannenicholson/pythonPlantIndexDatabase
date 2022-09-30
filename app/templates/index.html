@@ -13,46 +13,47 @@
     {% for plantname in plantnames %}
 
 
-<div class="container-fluid">
-        <div class="row">
-        <div class="col">
-            <div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center bg-light">
-                <div class="col-md-5 p-lg-5 mx-auto my-5">
-                    <h1 class="display-4 fw-normal">Welcome!</h1><br>
-                    <p class="lead fw-normal">Welcome to the Plant Index Database. Our team has been working on getting this up and running for some time now and
-                    are glad you could come and check it out. If you have any questions, queries, or just want to tell us what other plants you think we should add,
-                    don't hesitate using our <a href={{url_for('contact')}} class="text-muted"><u>Contact Us</u></a> page to get in touch.</p><br>
-                <p class="lead text-muted mb-0"> Sincerely, <br><br>The Plant Index team.</p>
+    <div class="container-fluid">
+            <div class="row">
+            <div class="col">
+                <div class="position-relative overflow-hidden p-1 p-md-1 m-md-1 text-center">
+                    <div class="col-md-5 p-lg-5 mx-auto my-5">
+                            <h1 class="display-4 fw-normal">Welcome!</h1><br>
+                            <p class="lead fw-normal">Welcome to the Plant Index Database. Our team has been working on getting this up and running for some time now and
+                            are glad you could come and check it out. If you have any questions, queries, or just want to tell us what other plants you think we should add,
+                            don't hesitate using our <a href={{url_for('contact')}} class="text-muted"><u>Contact Us</u></a> page to get in touch.</p><br>
+                        <p class="lead text-muted mb-0"> Sincerely, <br><br>The Plant Index team.</p>
+                    </div>
+                        <div class="product-device shadow-sm d-none d-md-block"></div>
+                        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
                 </div>
-                    <div class="product-device shadow-sm d-none d-md-block"></div>
-                    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
             </div>
         </div>
-    </div>
 
-    <div class="row">
-      <div class="col">
-        <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="row">
-                <div class="col">
-                    <div class="my-3 py-3">
-                    <h3 class="display-5 text-bg-dark">Check where you are in the world</h3>
-                    <p>Want to see what zone you are? <br><br>Want to see what plants work best in your area? <br><br>Why not take a look at our interactive Zone map to see what zones extend where!</p><br>
-                    <a class="btn btn-outline-secondary" href={{url_for('plantmap')}}>Link</a>
+        <div class="row">
+          <div class="col">
+            <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                <div class="row">
+                    <div class="col">
+                        <div class="my-3 py-3">
+                        <h3 class="display-5 text-bg-dark">Check where you are in the world</h3>
+                        <p>Want to see what zone you are? <br><br>Want to see what plants work best in your area? <br><br>Why not take a look at our interactive Zone map to see what zones extend where!</p><br>
+                        <a class="btn btn-outline-secondary" href={{url_for('plantmap')}}>Map Time!</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="my-3 p-3">
+                        <h3 class="display-5 text-bg-dark">Plant Spotlight</h3>
+                        <h4 class="text-bg-dark">{{plantname.plant_name}}</h4>
+                        <p class="lead">{{plantname.general_info}}</p>
+                        <a class="btn btn-outline-secondary" href="/plantinfo/{{plantname.plant_name}}">Check This Out!</a></div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="my-3 p-3">
-                    <h3 class="display-5 text-bg-dark">Plant Spotlight</h3>
-                    <h4 class="text-bg-dark">{{plantname.plant_name}}</h4>
-                    <p class="lead">{{plantname.general_info}}</p>
-                    <a class="btn btn-outline-secondary" href="/plantinfo/{{plantname.plant_name}}">Link</a></div>
-                </div>
             </div>
-        </div>
+          </div>
       </div>
-  </div>
-</div>
+    </div>
+
 
     {% endfor %}
     {% endblock %}
